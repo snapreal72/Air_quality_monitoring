@@ -1,0 +1,5 @@
+[wokwi]
+version = 1
+firmware = 'esp32-http-server.ino.standard.hex'
+elf = 'path-to-your-firmware.elf'
+

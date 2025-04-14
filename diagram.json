@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 285, "left": 70, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -148.76, "attrs": {} },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 69.9, "left": -357.8, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 192.3, "left": -322.2, "attrs": {} },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "lcd1",
+      "top": 35.2,
+      "left": 34.4,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 320.2,
+      "left": 75.95,
+      "rotate": 270,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 321.6,
+      "left": 95.45,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 321.6,
+      "left": 114.65,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.2", "lcd1:GND", "black", [ "v-9.6", "h48" ] ],
+    [ "gas1:GND", "esp:GND.2", "black", [ "h48", "v133.6", "h153.6", "v-211.2" ] ],
+    [ "gas1:AOUT", "esp:34", "cyan", [ "h67.2", "v-19.2" ] ],
+    [ "lcd1:SCL", "esp:22", "cyan", [ "h-28.8", "v-47.7", "h-9.6" ] ],
+    [ "lcd1:SDA", "esp:21", "orange", [ "h-67.2", "v-9.4" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v19.2", "h163.2", "v-86.4", "h96", "v-211.2" ] ],
+    [ "dht1:SDA", "esp:2", "green", [ "v9.6", "h268.9", "v-172.8" ] ],
+    [ "esp:5V", "bb1:tp.1", "red", [ "h-38.25", "v67.2" ] ],
+    [ "dht1:VCC", "r1:1", "red", [ "v0" ] ],
+    [ "lcd1:VCC", "r2:2", "red", [ "h-48", "v0.1" ] ],
+    [ "gas1:VCC", "bb1:6t.c", "red", [ "h19.2", "v277.5" ] ],
+    [ "r1:1", "bb1:2t.c", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:tp.1", "", [ "$bb" ] ],
+    [ "r2:1", "bb1:tp.3", "", [ "$bb" ] ],
+    [ "r2:2", "bb1:4t.c", "", [ "$bb" ] ],
+    [ "r3:1", "bb1:tp.5", "", [ "$bb" ] ],
+    [ "r3:2", "bb1:6t.c", "", [ "$bb" ] ]
+  ],
+  "dependencies": {}
+}
